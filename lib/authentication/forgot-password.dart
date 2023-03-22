@@ -1,4 +1,5 @@
 import 'package:e_evaluation/shared/colors.dart';
+import 'package:e_evaluation/widgets/buttons.dart';
 import 'package:e_evaluation/widgets/input-field.dart';
 import 'package:flutter/material.dart';
 import 'login.dart';
@@ -92,6 +93,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         const SizedBox(
                           height: 25,
                         ),
+                        textButton(
+                          onPressed: () {},
+                          buttonName: "Submit",
+                        ),
                       ],
                     ),
                   ),
@@ -121,13 +126,16 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                           ),
                         );
                       },
-                      child: Text(
-                        "Login",
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.9),
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 0.5,
-                          fontSize: 14,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: Text(
+                          "Login",
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.9),
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 0.5,
+                            fontSize: 14,
+                          ),
                         ),
                       ),
                     ),

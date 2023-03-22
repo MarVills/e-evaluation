@@ -1,6 +1,7 @@
 import 'package:e_evaluation/authentication/register.dart';
 
 import 'package:e_evaluation/shared/colors.dart';
+import 'package:e_evaluation/widgets/buttons.dart';
 import 'package:e_evaluation/widgets/input-field.dart';
 import 'package:flutter/material.dart';
 import 'forgot-password.dart';
@@ -97,31 +98,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           hasBorder: false,
                         ),
                         const SizedBox(height: 20),
-                        TextButton(
-                          onPressed: () {
-                            // Navigator.pop(context);
-                            // Navigator.of(context)
-                            //     .push(MaterialPageRoute(builder: (context) {
-                            //   return MyApp(isLogin: true);
-                            // }));
-                          },
-                          child: Text(
-                            "Login",
-                            style: TextStyle(
-                              color: Colors.white,
-                              letterSpacing: 0.5,
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          style: TextButton.styleFrom(
-                            backgroundColor: Color(0xFF2697FF),
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 14.0, horizontal: 80),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                          ),
+                        textButton(
+                          onPressed: () {},
+                          buttonName: "Login",
                         ),
                       ],
                     ),
@@ -139,24 +118,27 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     );
                   }),
-                  child: Text(
-                    "Forgot Password?",
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.9),
-                      letterSpacing: 0.5,
+                  child: MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: Text(
+                      "Forgot Password?",
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.7),
+                        letterSpacing: 0.5,
+                      ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text("Don't have an account? ",
-                        style: TextStyle(
-                          color: Colors.grey,
-                          letterSpacing: 0.5,
-                        )),
+                    // const Text("Don't have an account? ",
+                    //     style: TextStyle(
+                    //       color: Colors.grey,
+                    //       letterSpacing: 0.5,
+                    //     )),
                     GestureDetector(
                       onTap: () {
                         Navigator.pop(context);
@@ -168,18 +150,23 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         );
                       },
-                      child: Text(
-                        "Sign up",
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.9),
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 0.5,
-                          fontSize: 14,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors
+                            .click, // or SystemMouseCursors.basic
+                        child: Text(
+                          "Sign Up as School Head Administrator",
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.9),
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 0.5,
+                            fontSize: 14,
+                          ),
                         ),
                       ),
                     ),
                   ],
                 ),
+                const SizedBox(height: 50),
               ],
             ),
           ),
