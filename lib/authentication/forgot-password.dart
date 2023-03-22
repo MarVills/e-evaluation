@@ -1,4 +1,5 @@
 import 'package:e_evaluation/shared/colors.dart';
+import 'package:e_evaluation/widgets/input-field.dart';
 import 'package:flutter/material.dart';
 import 'login.dart';
 
@@ -73,7 +74,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         ),
                         Container(
                           child: Text(
-                            "Let us help you",
+                            "Forgot Password",
                             style: TextStyle(
                                 color: Colors.white.withOpacity(0.9),
                                 letterSpacing: 0.5),
@@ -82,50 +83,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         const SizedBox(
                           height: 20,
                         ),
-                        Container(
-                          width: 300,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            color: selected == FormData.Email
-                                ? enabled
-                                : backgroundColor,
-                          ),
-                          padding: const EdgeInsets.all(5.0),
-                          child: TextField(
-                            controller: emailController,
-                            onTap: () {
-                              setState(
-                                () {
-                                  selected = FormData.Email;
-                                },
-                              );
-                            },
-                            decoration: InputDecoration(
-                              enabledBorder: InputBorder.none,
-                              border: InputBorder.none,
-                              prefixIcon: Icon(
-                                Icons.email_outlined,
-                                color: selected == FormData.Email
-                                    ? enabledtxt
-                                    : deaible,
-                                size: 20,
-                              ),
-                              hintText: 'Email',
-                              hintStyle: TextStyle(
-                                  color: selected == FormData.Email
-                                      ? enabledtxt
-                                      : deaible,
-                                  fontSize: 12),
-                            ),
-                            textAlignVertical: TextAlignVertical.center,
-                            style: TextStyle(
-                                color: selected == FormData.Email
-                                    ? enabledtxt
-                                    : deaible,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12),
-                          ),
+                        inputField(
+                          controller: emailController,
+                          validator: null,
+                          hint: "Email",
+                          hasBorder: false,
                         ),
                         const SizedBox(
                           height: 25,
@@ -142,7 +104,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const Text(
-                      "Want to try again? ",
+                      "Go back to ",
                       style: TextStyle(
                         color: Colors.grey,
                         letterSpacing: 0.5,
@@ -160,12 +122,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         );
                       },
                       child: Text(
-                        "Sing in",
+                        "Login",
                         style: TextStyle(
-                            color: Colors.white.withOpacity(0.9),
-                            fontWeight: FontWeight.bold,
-                            letterSpacing: 0.5,
-                            fontSize: 14),
+                          color: Colors.white.withOpacity(0.9),
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 0.5,
+                          fontSize: 14,
+                        ),
                       ),
                     ),
                   ],

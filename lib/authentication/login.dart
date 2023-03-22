@@ -1,6 +1,7 @@
 import 'package:e_evaluation/authentication/register.dart';
 
 import 'package:e_evaluation/shared/colors.dart';
+import 'package:e_evaluation/widgets/input-field.dart';
 import 'package:flutter/material.dart';
 import 'forgot-password.dart';
 
@@ -73,9 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           width: 100,
                           height: 100,
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
+                        const SizedBox(height: 10),
                         Text(
                           "Please sign in to continue",
                           style: TextStyle(
@@ -83,121 +82,21 @@ class _LoginScreenState extends State<LoginScreen> {
                             letterSpacing: 0.5,
                           ),
                         ),
-                        const SizedBox(
-                          height: 20,
+                        const SizedBox(height: 20),
+                        inputField(
+                          controller: emailController,
+                          validator: null,
+                          hint: "Email",
+                          hasBorder: false,
                         ),
-                        Container(
-                          width: 300,
-                          height: 40,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12.0),
-                            color: selected == FormData.Email
-                                ? enabled
-                                : backgroundColor,
-                          ),
-                          padding: const EdgeInsets.all(5.0),
-                          child: TextField(
-                            controller: emailController,
-                            onTap: () {
-                              setState(() {
-                                selected = FormData.Email;
-                              });
-                            },
-                            decoration: InputDecoration(
-                              enabledBorder: InputBorder.none,
-                              border: InputBorder.none,
-                              prefixIcon: Icon(
-                                Icons.email_outlined,
-                                color: selected == FormData.Email
-                                    ? enabledtxt
-                                    : deaible,
-                                size: 20,
-                              ),
-                              hintText: 'Email',
-                              hintStyle: TextStyle(
-                                  color: selected == FormData.Email
-                                      ? enabledtxt
-                                      : deaible,
-                                  fontSize: 12),
-                            ),
-                            textAlignVertical: TextAlignVertical.center,
-                            style: TextStyle(
-                                color: selected == FormData.Email
-                                    ? enabledtxt
-                                    : deaible,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12),
-                          ),
+                        const SizedBox(height: 20),
+                        inputField(
+                          controller: passwordController,
+                          validator: null,
+                          hint: "Password",
+                          hasBorder: false,
                         ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Container(
-                          width: 300,
-                          height: 40,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.0),
-                              color: selected == FormData.password
-                                  ? enabled
-                                  : backgroundColor),
-                          padding: const EdgeInsets.all(5.0),
-                          child: TextField(
-                            controller: passwordController,
-                            onTap: () {
-                              setState(
-                                () {
-                                  selected = FormData.password;
-                                },
-                              );
-                            },
-                            decoration: InputDecoration(
-                                enabledBorder: InputBorder.none,
-                                border: InputBorder.none,
-                                prefixIcon: Icon(
-                                  Icons.lock_open_outlined,
-                                  color: selected == FormData.password
-                                      ? enabledtxt
-                                      : deaible,
-                                  size: 20,
-                                ),
-                                suffixIcon: IconButton(
-                                  icon: ispasswordev
-                                      ? Icon(
-                                          Icons.visibility_off,
-                                          color: selected == FormData.password
-                                              ? enabledtxt
-                                              : deaible,
-                                          size: 20,
-                                        )
-                                      : Icon(
-                                          Icons.visibility,
-                                          color: selected == FormData.password
-                                              ? enabledtxt
-                                              : deaible,
-                                          size: 20,
-                                        ),
-                                  onPressed: () => setState(
-                                      () => ispasswordev = !ispasswordev),
-                                ),
-                                hintText: 'Password',
-                                hintStyle: TextStyle(
-                                    color: selected == FormData.password
-                                        ? enabledtxt
-                                        : deaible,
-                                    fontSize: 12)),
-                            obscureText: ispasswordev,
-                            textAlignVertical: TextAlignVertical.center,
-                            style: TextStyle(
-                                color: selected == FormData.password
-                                    ? enabledtxt
-                                    : deaible,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
+                        const SizedBox(height: 20),
                         TextButton(
                           onPressed: () {
                             // Navigator.pop(context);
@@ -220,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 14.0, horizontal: 80),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12.0),
+                              borderRadius: BorderRadius.circular(5.0),
                             ),
                           ),
                         ),
@@ -228,9 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 GestureDetector(
                   onTap: (() {
                     Navigator.pop(context);
@@ -242,11 +139,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     );
                   }),
-                  child: Text("Can't Log In?",
-                      style: TextStyle(
-                        color: Colors.white.withOpacity(0.9),
-                        letterSpacing: 0.5,
-                      )),
+                  child: Text(
+                    "Forgot Password?",
+                    style: TextStyle(
+                      color: Colors.white.withOpacity(0.9),
+                      letterSpacing: 0.5,
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 10),
                 Row(
@@ -269,12 +168,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         );
                       },
-                      child: Text("Sign up",
-                          style: TextStyle(
-                              color: Colors.white.withOpacity(0.9),
-                              fontWeight: FontWeight.bold,
-                              letterSpacing: 0.5,
-                              fontSize: 14)),
+                      child: Text(
+                        "Sign up",
+                        style: TextStyle(
+                          color: Colors.white.withOpacity(0.9),
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 0.5,
+                          fontSize: 14,
+                        ),
+                      ),
                     ),
                   ],
                 ),
