@@ -38,7 +38,7 @@ Widget registerAsSchoolHeadAdmin(context) {
                   const SizedBox(height: 10),
                   Container(
                     child: Text(
-                      "Create User account",
+                      "Create Dvision Administrator Account",
                       style: TextStyle(
                           color: Colors.white.withOpacity(0.9),
                           letterSpacing: 0.5),
@@ -72,20 +72,20 @@ Widget registerAsSchoolHeadAdmin(context) {
                     hint: "Email",
                     hasBorder: false,
                   ),
-                  const SizedBox(height: 20),
-                  inputField(
-                    controller: schoolController,
-                    validator: null,
-                    hint: "School",
-                    hasBorder: false,
-                  ),
-                  const SizedBox(height: 20),
-                  inputField(
-                    controller: schoolAddressController,
-                    validator: null,
-                    hint: "School Address",
-                    hasBorder: false,
-                  ),
+                  // const SizedBox(height: 20),
+                  // inputField(
+                  //   controller: schoolController,
+                  //   validator: null,
+                  //   hint: "School",
+                  //   hasBorder: false,
+                  // ),
+                  // const SizedBox(height: 20),
+                  // inputField(
+                  //   controller: schoolAddressController,
+                  //   validator: null,
+                  //   hint: "School Address",
+                  //   hasBorder: false,
+                  // ),
                   const SizedBox(height: 20),
                   inputField(
                     controller: passwordController,

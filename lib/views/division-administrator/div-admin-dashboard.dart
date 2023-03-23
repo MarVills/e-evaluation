@@ -20,37 +20,44 @@ class _DivAdminDashboardState extends State<DivAdminDashboard> {
   Widget build(BuildContext context) {
     final ancestorScaffold = Scaffold.maybeOf(context);
     final hasDrawer = ancestorScaffold != null && ancestorScaffold.hasDrawer;
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: HexColor("#4b4293"),
-        leading: hasDrawer
-            ? IconButton(
-                icon: Icon(Icons.menu),
-                onPressed:
-                    hasDrawer ? () => ancestorScaffold!.openDrawer() : null,
-              )
-            : null,
-        title: Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Dashboard"),
-              Row(
-                children: [
-                  GestureDetector(
-                    child: MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: Icon(Icons.account_circle),
+    return WillPopScope(
+      onWillPop: () async {
+        return false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: HexColor("#4b4293"),
+          leading: hasDrawer
+              ? IconButton(
+                  icon: Icon(Icons.menu),
+                  onPressed:
+                      hasDrawer ? () => ancestorScaffold!.openDrawer() : null,
+                )
+              : null,
+          title: Container(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Dashboard"),
+                Row(
+                  children: [
+                    GestureDetector(
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: Icon(Icons.account_circle),
+                      ),
                     ),
-                  ),
-                ],
-              )
-            ],
+                  ],
+                )
+              ],
+            ),
           ),
         ),
-      ),
-      body: Container(
-        child: Column(),
+        body: Container(
+          child: Column(
+            children: [],
+          ),
+        ),
       ),
     );
   }
