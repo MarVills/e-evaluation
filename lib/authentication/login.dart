@@ -1,6 +1,7 @@
 import 'package:e_evaluation/authentication/register.dart';
 
 import 'package:e_evaluation/shared/colors.dart';
+import 'package:e_evaluation/views/teacher/teacher-dashboard.dart';
 import 'package:e_evaluation/widgets/buttons.dart';
 import 'package:e_evaluation/widgets/input-field.dart';
 import 'package:flutter/material.dart';
@@ -99,7 +100,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         const SizedBox(height: 20),
                         textButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    TeacherDashboard(), //DivAdminDashboard(),
+                              ),
+                            );
+                          },
                           buttonName: "Login",
                         ),
                       ],
