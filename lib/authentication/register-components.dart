@@ -9,7 +9,7 @@ Widget registerAsSchoolHeadAdmin(context) {
   TextEditingController phoneController = new TextEditingController();
   TextEditingController emailController = new TextEditingController();
   TextEditingController genderController = new TextEditingController();
-  TextEditingController schoolController = new TextEditingController();
+  TextEditingController departmentController = new TextEditingController();
   TextEditingController schoolAddressController = new TextEditingController();
   TextEditingController passwordController = new TextEditingController();
   TextEditingController confirmPasswordController = new TextEditingController();
@@ -38,7 +38,7 @@ Widget registerAsSchoolHeadAdmin(context) {
                   const SizedBox(height: 10),
                   Container(
                     child: Text(
-                      "Create Dvision Administrator Account",
+                      "Create Division Administrator Account",
                       style: TextStyle(
                           color: Colors.white.withOpacity(0.9),
                           letterSpacing: 0.5),
@@ -72,13 +72,13 @@ Widget registerAsSchoolHeadAdmin(context) {
                     hint: "Email",
                     hasBorder: false,
                   ),
-                  // const SizedBox(height: 20),
-                  // inputField(
-                  //   controller: schoolController,
-                  //   validator: null,
-                  //   hint: "School",
-                  //   hasBorder: false,
-                  // ),
+                  const SizedBox(height: 20),
+                  inputField(
+                    controller: departmentController,
+                    validator: null,
+                    hint: "Department",
+                    hasBorder: false,
+                  ),
                   // const SizedBox(height: 20),
                   // inputField(
                   //   controller: schoolAddressController,
@@ -103,7 +103,7 @@ Widget registerAsSchoolHeadAdmin(context) {
                   const SizedBox(height: 25),
                   textButton(
                     onPressed: () {},
-                    buttonName: "Sign Up",
+                    buttonName: "Register",
                   ),
                 ],
               ),

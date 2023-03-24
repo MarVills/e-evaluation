@@ -26,6 +26,7 @@ class _DivAdminDashboardState extends State<DivAdminDashboard> {
       },
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: HexColor("#4b4293"),
           leading: hasDrawer
               ? IconButton(
