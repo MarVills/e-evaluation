@@ -108,7 +108,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => DivAdminDashboard(),
+                                  builder: (context) =>
+                                      TeacherDashboard(), //DivAdminDashboard(),
                                 ),
                               );
                             },
