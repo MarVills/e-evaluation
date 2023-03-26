@@ -30,6 +30,8 @@ class AuthQuery {
       }
       print(e);
       return null;
+    } catch (e) {
+      print("Error on login $e");
     }
   }
 

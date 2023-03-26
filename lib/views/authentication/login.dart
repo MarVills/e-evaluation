@@ -1,6 +1,7 @@
 import 'package:e_evaluation/services/emailChecker.dart';
 import 'package:e_evaluation/shared/colors.dart';
 import 'package:e_evaluation/shared/queries/authentication.dart';
+import 'package:e_evaluation/shared/widgets/widgets.dart';
 import 'package:e_evaluation/views/authentication/register.dart';
 import 'package:e_evaluation/views/division-administrator/div-admin-dashboard.dart';
 import 'package:e_evaluation/views/teacher/teacher-dashboard.dart';
@@ -134,16 +135,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                         var response = await query.signInWithEmailAndPassword(email: email.text, password: password.text);
                                         print("see response ${response!.email}");
                                         print("see response ${response.uid}");
+                                        if (response != null) {
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (context) => TeacherDashboard(), //DivAdminDashboard(),
+                                            ),
+                                          );
+                                        } else {
+                                          showSnackBar(context, "Login failed");
+                                        }
 
                                         setState(() {
                                           isLoading = false;
                                         });
                                       }
-                                      // Navigator.of(context).push(
-                                      //   MaterialPageRoute(
-                                      //     builder: (context) => TeacherDashboard(), //DivAdminDashboard(),
-                                      //   ),
-                                      // );
                                     },
                                     buttonName: "Login",
                                   ),
