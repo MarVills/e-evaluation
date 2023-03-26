@@ -24,6 +24,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
   TextEditingController gradeLevelTaught = new TextEditingController();
   TextEditingController subjectTaught = new TextEditingController();
   TextEditingController school = new TextEditingController();
+  final ScrollController scrollController = ScrollController();
 
   var step = 0;
 
@@ -32,6 +33,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
     final ancestorScaffold = Scaffold.maybeOf(context);
     final hasDrawer = ancestorScaffold != null && ancestorScaffold.hasDrawer;
     final Size size = MediaQuery.of(context).size;
+
     return WillPopScope(
       onWillPop: () async {
         return false;
@@ -43,8 +45,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
           leading: hasDrawer
               ? IconButton(
                   icon: Icon(Icons.menu),
-                  onPressed:
-                      hasDrawer ? () => ancestorScaffold!.openDrawer() : null,
+                  onPressed: hasDrawer ? () => ancestorScaffold!.openDrawer() : null,
                 )
               : null,
           title: Container(
@@ -73,17 +74,11 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               stops: const [0.1, 0.4, 0.7, 0.9],
-              colors: [
-                HexColor("#4b4293").withOpacity(0.8),
-                HexColor("#4b4293"),
-                HexColor("#08418e"),
-                HexColor("#08418e")
-              ],
+              colors: [HexColor("#4b4293").withOpacity(0.8), HexColor("#4b4293"), HexColor("#08418e"), HexColor("#08418e")],
             ),
             image: DecorationImage(
               fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(
-                  HexColor("#fff").withOpacity(0.2), BlendMode.dstATop),
+              colorFilter: ColorFilter.mode(HexColor("#fff").withOpacity(0.2), BlendMode.dstATop),
               image: const NetworkImage(
                 'https://mir-s3-cdn-cf.behance.net/project_modules/fs/01b4bd84253993.5d56acc35e143.jpg',
               ),
@@ -115,7 +110,22 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
                     Container(
                       height: size.height * 0.9,
                       // width: size.width,
-                      child: BeginnerQuestionnaire(step: step),
+                      child: HighProficientQuestionnaire(
+                        step: step,
+                        scrollController: scrollController,
+                        nextFunction: () {
+                          setState(() {
+                            step += 1;
+                            WidgetsBinding.instance!.addPostFrameCallback((_) {
+                              scrollController.animateTo(
+                                0.0,
+                                duration: Duration(milliseconds: 100),
+                                curve: Curves.easeOut,
+                              );
+                            });
+                          });
+                        },
+                      ),
                     ),
                 ],
               ),

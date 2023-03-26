@@ -202,32 +202,26 @@ Map setCurrentStepData(step) {
     case 5:
       return {"step": step, "title": "Domain 5: Assesment and Reporting"};
     case 6:
-      return {
-        "step": step,
-        "title": "Domain 6: Community Linkage and Professional Engagement"
-      };
+      return {"step": step, "title": "Domain 6: Community Linkage and Professional Engagement"};
     case 7:
-      return {
-        "step": step,
-        "title": "Domain 7: Personal Growth and Professional Development"
-      };
+      return {"step": step, "title": "Domain 7: Personal Growth and Professional Development"};
     default:
       return {"step": 0, "title": "First Steps"};
   }
 }
 
-Widget beginner({
+Widget questionnaireContainer({
   required nextFunction,
   required questions,
   required context,
   required onChanged,
   required step,
+  required teacherType,
 }) {
   List<Widget> questionWidgets = [];
   final Size size = MediaQuery.of(context).size;
   questions.forEach((question) {
-    questionWidgets.add(questionWidget(
-        question: question, onChanged: onChanged, groupValue: ""));
+    questionWidgets.add(questionWidget(question: question, onChanged: onChanged, groupValue: ""));
   });
 
   return Card(
@@ -246,7 +240,7 @@ Widget beginner({
           Align(
             alignment: Alignment.center,
             child: Text(
-              "Beginner Teacher",
+              teacherType,
               style: TextStyle(
                 color: Colors.black,
                 letterSpacing: 0.5,
