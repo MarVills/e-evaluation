@@ -98,7 +98,7 @@ Widget initialQuestions({
 }) {
   return Card(
     elevation: 5,
-    color: const Color.fromARGB(255, 171, 211, 250).withOpacity(0.4),
+    color: const Color.fromARGB(255, 224, 238, 238).withOpacity(0.4),
     child: Container(
       width: 400,
       padding: const EdgeInsets.all(40.0),

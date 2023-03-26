@@ -24,6 +24,7 @@ Widget inputField({
   horizontaPadding: 10.0,
   enabled: true,
   autoValidateMode: AutovalidateMode.onUserInteraction,
+  isObscureText: false,
 }) {
   return TextFormField(
     textAlign: textAlign,
@@ -35,6 +36,7 @@ Widget inputField({
     autovalidateMode: autoValidateMode,
     style: TextStyle(fontSize: fontSize),
     enabled: enabled,
+    obscureText: isObscureText,
     decoration: InputDecoration(
       filled: true,
       fillColor: fieldColor,
@@ -42,26 +44,23 @@ Widget inputField({
       // prefixIcon: icon,
       hintText: hint,
       hintStyle: TextStyle(color: Colors.grey[600]),
+      contentPadding: EdgeInsets.symmetric(vertical: verticalPadding, horizontal: horizontaPadding),
+      errorStyle: TextStyle(
+          // backgroundColor: Colors.white.withOpacity(0.8),
+          // height: 2,
+          ),
 
-      contentPadding: EdgeInsets.symmetric(
-          vertical: verticalPadding, horizontal: horizontaPadding),
       border: OutlineInputBorder(
-        borderSide: hasBorder
-            ? BorderSide(color: borderColor, width: borderWidth)
-            : BorderSide(width: 0, style: BorderStyle.none),
+        borderSide: hasBorder ? BorderSide(color: borderColor, width: borderWidth) : BorderSide(width: 0, style: BorderStyle.none),
         borderRadius: BorderRadius.circular(borderRadius),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: hasBorder
-            ? BorderSide(color: onFocusBorderColor, width: borderWidth)
-            : BorderSide(width: 0, style: BorderStyle.none),
+        borderSide: hasBorder ? BorderSide(color: onFocusBorderColor, width: borderWidth) : BorderSide(width: 0, style: BorderStyle.none),
         // BorderSide(color: onFocusBorderColor, width: borderWidth),
         borderRadius: BorderRadius.circular(borderRadius),
       ),
       enabledBorder: OutlineInputBorder(
-        borderSide: hasBorder
-            ? BorderSide(color: borderColor, width: borderWidth)
-            : BorderSide(width: 0, style: BorderStyle.none),
+        borderSide: hasBorder ? BorderSide(color: borderColor, width: borderWidth) : BorderSide(width: 0, style: BorderStyle.none),
         borderRadius: BorderRadius.circular(borderRadius),
       ),
     ),
