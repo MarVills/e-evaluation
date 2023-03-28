@@ -204,19 +204,19 @@ class _SignupScreenState extends State<SignupScreen> {
                                       setState(() {
                                         isLoading = true;
                                       });
-                                      var userDetailsAPI = UserDetailsAPI();
-                                      var userDetailsData = {
-                                        "fullname": name.text,
-                                        "gender": gender.text,
-                                        "email": email.text,
-                                        "phone_number": phone.text,
-                                        "department": department.text
-                                      };
-                                      var userDetailsResponse =
-                                          await userDetailsAPI
-                                              .push(userDetailsData);
-                                      print(
-                                          "user details response $userDetailsResponse");
+                                      // var userDetailsAPI = UserDetailsAPI();
+                                      // var userDetailsData = {
+                                      //   "fullname": name.text,
+                                      //   "gender": gender.text,
+                                      //   "email": email.text,
+                                      //   "phone_number": phone.text,
+                                      //   "department": department.text
+                                      // };
+                                      // var userDetailsResponse =
+                                      //     await userDetailsAPI
+                                      //         .push(userDetailsData);
+                                      // print(
+                                      //     "user details response $userDetailsResponse");
                                       // var response = await query
                                       //     .signUpWithEmailAndPassword(
                                       //         email: email.text,
