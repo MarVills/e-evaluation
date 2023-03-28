@@ -1,5 +1,6 @@
 import 'package:e_evaluation/shared/colors.dart';
 import 'package:e_evaluation/shared/queries/authentication.dart';
+import 'package:e_evaluation/shared/queries/userDetailsAPI.dart';
 import 'package:e_evaluation/views/authentication/register-components.dart';
 import 'package:e_evaluation/widgets/buttons.dart';
 import 'package:e_evaluation/widgets/input-field.dart';
@@ -45,11 +46,17 @@ class _SignupScreenState extends State<SignupScreen> {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             stops: const [0.1, 0.4, 0.7, 0.9],
-            colors: [HexColor("#4b4293").withOpacity(0.8), HexColor("#4b4293"), HexColor("#08418e"), HexColor("#08418e")],
+            colors: [
+              HexColor("#4b4293").withOpacity(0.8),
+              HexColor("#4b4293"),
+              HexColor("#08418e"),
+              HexColor("#08418e")
+            ],
           ),
           image: DecorationImage(
             fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(HexColor("#fff").withOpacity(0.2), BlendMode.dstATop),
+            colorFilter: ColorFilter.mode(
+                HexColor("#fff").withOpacity(0.2), BlendMode.dstATop),
             image: const NetworkImage(
               'https://mir-s3-cdn-cf.behance.net/project_modules/fs/01b4bd84253993.5d56acc35e143.jpg',
             ),
@@ -66,7 +73,8 @@ class _SignupScreenState extends State<SignupScreen> {
                       children: [
                         Card(
                           elevation: 5,
-                          color: const Color.fromARGB(255, 224, 238, 238).withOpacity(0.4),
+                          color: const Color.fromARGB(255, 224, 238, 238)
+                              .withOpacity(0.4),
                           child: Container(
                             width: 400,
                             padding: const EdgeInsets.all(40.0),
@@ -85,7 +93,9 @@ class _SignupScreenState extends State<SignupScreen> {
                                 Container(
                                   child: Text(
                                     "Create Division Administrator Account",
-                                    style: TextStyle(color: Colors.white.withOpacity(0.9), letterSpacing: 0.5),
+                                    style: TextStyle(
+                                        color: Colors.white.withOpacity(0.9),
+                                        letterSpacing: 0.5),
                                   ),
                                 ),
                                 const SizedBox(height: 20),
@@ -175,7 +185,8 @@ class _SignupScreenState extends State<SignupScreen> {
                                   validator: (value) {
                                     if (value.isEmpty) {
                                       return "This field is required!";
-                                    } else if (password.text != confirmPassword.text) {
+                                    } else if (password.text !=
+                                        confirmPassword.text) {
                                       return "Password does not match";
                                     } else {
                                       return null;
@@ -193,8 +204,24 @@ class _SignupScreenState extends State<SignupScreen> {
                                       setState(() {
                                         isLoading = true;
                                       });
-                                      var response = await query.signUpWithEmailAndPassword(email: email.text, password: confirmPassword.text);
-                                      print("see response $response");
+                                      var userDetailsAPI = UserDetailsAPI();
+                                      var userDetailsData = {
+                                        "fullname": name.text,
+                                        "gender": gender.text,
+                                        "email": email.text,
+                                        "phone_number": phone.text,
+                                        "department": department.text
+                                      };
+                                      var userDetailsResponse =
+                                          await userDetailsAPI
+                                              .push(userDetailsData);
+                                      print(
+                                          "user details response $userDetailsResponse");
+                                      // var response = await query
+                                      //     .signUpWithEmailAndPassword(
+                                      //         email: email.text,
+                                      //         password: confirmPassword.text);
+                                      // print("see response $response");
 
                                       setState(() {
                                         isLoading = false;
@@ -222,7 +249,8 @@ class _SignupScreenState extends State<SignupScreen> {
                             GestureDetector(
                               onTap: () {
                                 Navigator.pop(context);
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (context) {
                                   return LoginScreen();
                                 }));
                               },
