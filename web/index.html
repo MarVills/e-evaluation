@@ -21,7 +21,13 @@
   </head>
   <body>
     <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js";
+      // import { initializeApp } from "https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js";
+      import firebase from "firebase/app";
+
+      // Import the Firebase services you want to use
+      import "firebase/auth";
+      import "firebase/firestore";
+
       const firebaseConfig = {
         apiKey: "AIzaSyAFGtLueE7rk70gGKgdLqDQ4jWRVoCBUCo",
         authDomain: "e-evaluation-f1d87.firebaseapp.com",
